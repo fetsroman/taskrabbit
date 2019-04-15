@@ -2,10 +2,10 @@
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-  = f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a Category" }
-  = f.input :title, label: "Task Title"
-  = f.input :description, label: "Task Description"
-  = f.input :company, label: "Your Company"
-  = f.input :url, label: "Link to Task"
+  = f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a Category" }, input_html: { class: "dropdown-toggle" }
+  = f.input :title, label: "Task Title", class: "form-control"
+  = f.input :description, label: "Task Description", class: "form-control"
+  = f.input :company, label: "Your Company", class: "form-control"
+  = f.input :url, label: "Link to Task", class: "form-control"
 
   = f.button :submit

@@ -9,7 +9,15 @@
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
 %body
-  - Category.all.each do |category|
-    = link_to category.name, tasks_path(category: category.name)
-
-  = yield
+  %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    .container
+      .navbar-brand TaskRabbit
+      %ul.navbar-nav
+        %li= link_to "All Tasks", root_path, class: "nav-link"
+        - Category.all.each do |category|
+          %li= link_to category.name, tasks_path(category: category.name), class: "nav-link"
+      = link_to "New Task", new_task_path, class: "navbar-text navbar-right navbar-link"
+      
+  .container
+    .col-md-8.col-md-offset-2
+      = yield
